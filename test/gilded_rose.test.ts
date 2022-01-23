@@ -1,9 +1,9 @@
-const { Shop } = require("../src/protocols/Shop");
-const { Item } = require("../src/protocols/Item");
-const { Conjured } = require("../src/protocols/Conjured");
-const { Cheese } = require("../src/protocols/Cheese");
-const { Legendary } = require("../src/protocols/Legendary");
-const { Pass } = require("../src/protocols/Pass");
+import{ Shop } from "../src/protocols/Shop";
+import{ Item } from "../src/protocols/Item";
+import{ Conjured } from "../src/protocols/Conjured";
+import{ Cheese } from "../src/protocols/Cheese";
+import{ Legendary } from "../src/protocols/Legendary";
+import{ Pass } from "../src/protocols/Pass";
 
 describe("Gilded Rose", function() {
   
@@ -104,11 +104,16 @@ describe("Gilded Rose", function() {
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Legendary("Sulfuras, Hand of Ragnaros", 0, 80),
-      new Legendary("Infinity Gauntlet", 0, 80),
-      new Legendary("Javascript", 1, 80),
-      new Legendary("Golden Banana", -2, 80),
+      new Legendary("Sulfuras, Hand of Ragnaros", 0),
+      new Legendary("Infinity Gauntlet", 0),
+      new Legendary("Javascript", 1),
+      new Legendary("Golden Banana", -2),
     ]);
+
+    expect(items[0].quality).toBe(80);
+    expect(items[1].quality).toBe(80);
+    expect(items[2].quality).toBe(80);
+    expect(items[3].quality).toBe(80);
   });
 
   it("should increase quality by 1 for Pass Items with sellIn greater than 10", function() {

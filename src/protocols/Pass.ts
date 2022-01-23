@@ -1,7 +1,7 @@
-const { Item } = require("./Item");
+import { Item } from './Item';
 
-class Pass extends Item {
-  constructor(name, sellIn, quality) {
+export class Pass extends Item {
+  constructor(name: string, sellIn: number, quality: number) {
     super(name, sellIn, quality);
   }
 
@@ -23,8 +23,4 @@ class Pass extends Item {
       this.quality = 0;
     }
   }
-}
-
-module.exports = {
-  Pass
 }

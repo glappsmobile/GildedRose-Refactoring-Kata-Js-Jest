@@ -1,7 +1,7 @@
-const { Item } = require("./Item");
+import { Item } from './Item';
 
-class Cheese extends Item {
-  constructor(name, sellIn, quality) {
+export class Cheese extends Item {
+  constructor(name: string, sellIn: number , quality: number) {
     super(name, sellIn, quality);
   }
 
@@ -15,8 +15,4 @@ class Cheese extends Item {
     }
 
   }
-}
-
-module.exports = {
-  Cheese
 }
