@@ -12,10 +12,10 @@ describe("Gilded Rose", function() {
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-        { name: "+5 Dexterity Vest", sellIn: 9, quality: 19},
-        { name: "Elixir of the Mongoose", sellIn: 4, quality: 6},
-        { name: "Mysterious Powder", sellIn: 0, quality: 0},
-        { name: "Unknown Seed", sellIn: 49, quality: 49},
+      new Item("+5 Dexterity Vest", 9, 19),
+      new Item("Elixir of the Mongoose", 4, 6),
+      new Item("Mysterious Powder", 0, 0),
+      new Item("Unknown Seed", 49, 49),
     ]);
   });
 
@@ -30,10 +30,10 @@ describe("Gilded Rose", function() {
     const items = gildedRose.updateQuality();
     
     expect(items).toEqual([
-        { name: "+5 Dexterity Vest", sellIn: 9, quality: 0},
-        { name: "Elixir of the Mongoose", sellIn: 4, quality: 0},
-        { name: "Mysterious Powder", sellIn: 0, quality: 0},
-        { name: "Unknown Seed", sellIn: 49, quality: 0},
+        new Item("+5 Dexterity Vest", 9, 0),
+        new Item("Elixir of the Mongoose", 4, 0),
+        new Item("Mysterious Powder", 0, 0),
+        new Item("Unknown Seed", 49, 0),
     ]);
   });
 
