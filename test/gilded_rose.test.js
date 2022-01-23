@@ -1,4 +1,4 @@
-const { Shop } = require("../src/gilded_rose");
+const { Shop } = require("../src/protocols/Shop");
 const { Item } = require("../src/protocols/Item");
 const { Conjured } = require("../src/protocols/Conjured");
 const { Cheese } = require("../src/protocols/Cheese");
