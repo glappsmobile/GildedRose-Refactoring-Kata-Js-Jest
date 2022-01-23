@@ -219,4 +219,22 @@ describe("Gilded Rose", function() {
       new Item("Conjured Mana Cake", -3, 0),
     ]);
   });
+
+  it("should not decrease any quality below 0", function() {
+    const gildedRose = new Shop([
+      new Item("Conjured Mana Cake", 2, 1),
+      new Item("Conjured Mana Cake", -1, 3),
+      new Item("+5 Dexterity Vest", 5, 0),
+      new Item("Elixir of the Mongoose", -1, 1),
+    ]);
+
+    const items = gildedRose.updateQuality();
+
+    expect(items).toEqual([
+      new Item("Conjured Mana Cake", 1, 0),
+      new Item("Conjured Mana Cake", -2, 0),
+      new Item("+5 Dexterity Vest", 4, 0),
+      new Item("Elixir of the Mongoose", -2, 0),
+    ]);
+  });
 });
