@@ -1,5 +1,7 @@
 
-const { Shop, Item } = require("../src/gilded_rose");
+const { Shop } = require("../src/gilded_rose");
+const { Item } = require("../src/protocols/Item");
+const { Conjured } = require("../src/protocols/Conjured");
 
 const items = [
   new Item("+5 Dexterity Vest", 10, 20),
@@ -10,9 +12,7 @@ const items = [
   new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
   new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
   new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-
-  // This Conjured item does not work properly yet
-  new Item("Conjured Mana Cake", 3, 6),
+  new Conjured("Conjured Mana Cake", 3, 6),
 ];
 
 const days = Number(process.argv[2]) || 2;

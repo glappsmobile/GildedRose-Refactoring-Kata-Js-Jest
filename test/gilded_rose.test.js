@@ -1,4 +1,6 @@
-const {Shop, Item} = require("../src/gilded_rose");
+const { Shop } = require("../src/gilded_rose");
+const { Item } = require("../src/protocols/Item");
+const { Conjured } = require("../src/protocols/Conjured");
 
 describe("Gilded Rose", function() {
   
@@ -190,9 +192,9 @@ describe("Gilded Rose", function() {
 
   it("should decrease quality by 2 for 'Conjured Mana Cake' with sellIn and quality greater than 0", function() {
     const gildedRose = new Shop([
-      new Item("Conjured Mana Cake", 10, 20),
-      new Item("Conjured Mana Cake", 5, 5),
-      new Item("Conjured Mana Cake", 1, 2),
+      new Conjured("Conjured Mana Cake", 10, 20),
+      new Conjured("Conjured Mana Cake", 5, 5),
+      new Conjured("Conjured Mana Cake", 1, 2),
     ]);
 
     const items = gildedRose.updateQuality();
@@ -206,9 +208,9 @@ describe("Gilded Rose", function() {
 
   it("should decrease quality by 4 for 'Conjured Mana Cake' with sellIn less than or equals to 0", function() {
     const gildedRose = new Shop([
-      new Item("Conjured Mana Cake", 0, 20),
-      new Item("Conjured Mana Cake", -1, 5),
-      new Item("Conjured Mana Cake", -2, 4),
+      new Conjured("Conjured Mana Cake", 0, 20),
+      new Conjured("Conjured Mana Cake", -1, 5),
+      new Conjured("Conjured Mana Cake", -2, 4),
     ]);
 
     const items = gildedRose.updateQuality();
@@ -222,8 +224,8 @@ describe("Gilded Rose", function() {
 
   it("should not decrease any quality below 0", function() {
     const gildedRose = new Shop([
-      new Item("Conjured Mana Cake", 2, 1),
-      new Item("Conjured Mana Cake", -1, 3),
+      new Conjured("Conjured Mana Cake", 2, 1),
+      new Conjured("Conjured Mana Cake", -1, 3),
       new Item("+5 Dexterity Vest", 5, 0),
       new Item("Elixir of the Mongoose", -1, 1),
     ]);
