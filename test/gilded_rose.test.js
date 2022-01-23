@@ -36,5 +36,23 @@ describe("Gilded Rose", function() {
         { name: "Unknown Seed", sellIn: 49, quality: 0},
     ]);
   });
+
+  it("should decrease quality by 2 for ordinary items with sellIn less than or equals to 0", function() {
+    const gildedRose = new Shop([
+      new Item("+5 Dexterity Vest", 0, 20),
+      new Item("Elixir of the Mongoose", -1, 7),
+      new Item("Mysterious Powder", -3, 2),
+      new Item("Unknown Seed", -5, 50),
+    ]);
+
+    const items = gildedRose.updateQuality();
+
+    expect(items).toEqual([
+      new Item("+5 Dexterity Vest", -1, 18),
+      new Item("Elixir of the Mongoose", -2, 5),
+      new Item("Mysterious Powder", -4, 0),
+      new Item("Unknown Seed", -6, 48),
+    ]);
+  });
   
 });
