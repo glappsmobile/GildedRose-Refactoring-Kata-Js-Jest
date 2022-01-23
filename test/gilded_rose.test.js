@@ -242,4 +242,32 @@ describe("Gilded Rose", function() {
       new Item("Elixir of the Mongoose", -2, 0),
     ]);
   });
+
+  it("should set quality to 50 when creating a non-legendary item with quality greater than 50", function() {
+    const gildedRose = new Shop([
+      new Conjured("Conjured Mana Cake", 2, 51),
+      new Pass("Moddest Mouse Ticket", 20, 200),
+      new Item("+5 Dexterity Vest", 5, 90),
+    ]);
+
+    expect(gildedRose).toEqual(new Shop([
+      new Conjured("Conjured Mana Cake", 2, 50),
+      new Pass("Moddest Mouse Ticket", 20, 50),
+      new Item("+5 Dexterity Vest", 5, 50),
+    ]));
+  });
+
+  it("should set quality to 0 when creating an item with quality less than 50", function() {
+    const gildedRose = new Shop([
+      new Conjured("Conjured Mana Cake", 2, -1),
+      new Pass("Moddest Mouse Ticket", 20, -200),
+      new Item("+5 Dexterity Vest", 5, -90),
+    ]);
+
+    expect(gildedRose).toEqual(new Shop([
+      new Conjured("Conjured Mana Cake", 2, 0),
+      new Pass("Moddest Mouse Ticket", 20, 0),
+      new Item("+5 Dexterity Vest", 5, 0),
+    ]));
+  });
 });
