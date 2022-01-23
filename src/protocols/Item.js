@@ -1,6 +1,6 @@
 class Item {
 
-  constructor(name, sellIn, quality, decreaseRate, hasQualityLimit){
+  constructor(name, sellIn, quality, decreaseRate, hasQualityLimit = true){
     this.maxQuality = 50;
     this.minQuality = 0;
 
