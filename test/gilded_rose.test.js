@@ -1,6 +1,7 @@
 const {Shop, Item} = require("../src/gilded_rose");
 
 describe("Gilded Rose", function() {
+  
   it("should decrease sellIn and quality by 1 for ordinary items with sellIn and quality greater than 0", function() {
     const gildedRose = new Shop([
       new Item("+5 Dexterity Vest", 10, 20),
@@ -184,6 +185,38 @@ describe("Gilded Rose", function() {
       new Item("Backstage passes to a TAFKAL80ETC concert", 9, 50),
       new Item("Backstage passes to a TAFKAL80ETC concert", 19, 50),
       new Item("Aged Brie", -2, 50),
+    ]);
+  });
+
+  it("should decrease quality by 2 for 'Conjured Mana Cake' with sellIn and quality greater than 0", function() {
+    const gildedRose = new Shop([
+      new Item("Conjured Mana Cake", 10, 20),
+      new Item("Conjured Mana Cake", 5, 5),
+      new Item("Conjured Mana Cake", 1, 2),
+    ]);
+
+    const items = gildedRose.updateQuality();
+
+    expect(items).toEqual([
+      new Item("Conjured Mana Cake", 9, 18),
+      new Item("Conjured Mana Cake", 4, 3),
+      new Item("Conjured Mana Cake", 0, 0),
+    ]);
+  });
+
+  it("should decrease quality by 4 for 'Conjured Mana Cake' with sellIn less than or equals to 0", function() {
+    const gildedRose = new Shop([
+      new Item("Conjured Mana Cake", 0, 20),
+      new Item("Conjured Mana Cake", -1, 5),
+      new Item("Conjured Mana Cake", -2, 4),
+    ]);
+
+    const items = gildedRose.updateQuality();
+
+    expect(items).toEqual([
+      new Item("Conjured Mana Cake", -1, 16),
+      new Item("Conjured Mana Cake", -2, 1),
+      new Item("Conjured Mana Cake", -3, 0),
     ]);
   });
 });
