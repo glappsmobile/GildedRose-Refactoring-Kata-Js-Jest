@@ -2,6 +2,7 @@ const { Shop } = require("../src/gilded_rose");
 const { Item } = require("../src/protocols/Item");
 const { Conjured } = require("../src/protocols/Conjured");
 const { Cheese } = require("../src/protocols/Cheese");
+const { Legendary } = require("../src/protocols/Legendary");
 
 describe("Gilded Rose", function() {
   
@@ -93,19 +94,19 @@ describe("Gilded Rose", function() {
 
   it("should keep quality at 80 and leave sellIn untouched for 'Sulfuras, Hand of Ragnaros'", function() {
     const gildedRose = new Shop([
-      new Item("Sulfuras, Hand of Ragnaros", 10, 80),
-      new Item("Sulfuras, Hand of Ragnaros", 4, 80),
-      new Item("Sulfuras, Hand of Ragnaros", 0, 80),
-      new Item("Sulfuras, Hand of Ragnaros", -1, 80),
+      new Legendary("Sulfuras, Hand of Ragnaros"),
+      new Legendary("Sulfuras, Hand of Ragnaros"),
+      new Legendary("Sulfuras, Hand of Ragnaros", 1),
+      new Legendary("Sulfuras, Hand of Ragnaros", -2),
     ]);
 
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Item("Sulfuras, Hand of Ragnaros", 10, 80),
-      new Item("Sulfuras, Hand of Ragnaros", 4, 80),
       new Item("Sulfuras, Hand of Ragnaros", 0, 80),
-      new Item("Sulfuras, Hand of Ragnaros", -1, 80),
+      new Item("Sulfuras, Hand of Ragnaros", 0, 80),
+      new Item("Sulfuras, Hand of Ragnaros", 1, 80),
+      new Item("Sulfuras, Hand of Ragnaros", -2, 80),
     ]);
   });
 

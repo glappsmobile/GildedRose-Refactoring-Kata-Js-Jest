@@ -1,8 +1,8 @@
 class Item {
   constructor(name, sellIn, quality){
-    this.name = name;
-    this.sellIn = sellIn;
-    this.quality = quality;
+    this.name = name || "Unknown";
+    this.sellIn = sellIn || 0;
+    this.quality = quality || 0;
   }
 
   decreaseQuality(value) {
@@ -26,11 +26,10 @@ class Item {
   }
 
   updateQuality() {
+
     if (this.name != 'Backstage passes to a TAFKAL80ETC concert') {
       if (this.quality > 0) {
-        if (this.name != 'Sulfuras, Hand of Ragnaros') {
           this.decreaseQuality()
-        }
       }
     } else {
       if (this.quality < 50) {
@@ -49,15 +48,13 @@ class Item {
         }
       }
     }
-    if (this.name != 'Sulfuras, Hand of Ragnaros') {
-      this.decreaseSellIn()
-    }
+
+    this.decreaseSellIn();
+
     if (this.sellIn < 0) {
         if (this.name != 'Backstage passes to a TAFKAL80ETC concert') {
           if (this.quality > 0) {
-            if (this.name != 'Sulfuras, Hand of Ragnaros') {
               this.decreaseQuality()
-            }
           }
         } else {
           this.quality = this.quality - this.quality;
