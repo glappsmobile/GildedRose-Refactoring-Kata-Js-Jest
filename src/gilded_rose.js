@@ -5,12 +5,12 @@ class Item {
     this.quality = quality;
   }
 
-  decreaseQuality() {
-    this.quality -= 1;
+  decreaseQuality(value) {
+    this.quality -= value || 1;
   }
 
-  increaseQuality() {
-    this.quality += 1;
+  increaseQuality(value) {
+    this.quality += value || 1;
   }
 }
 
