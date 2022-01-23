@@ -202,9 +202,9 @@ describe("Gilded Rose", function() {
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Item("Conjured Mana Cake", 9, 18),
-      new Item("Conjured Pie", 4, 3),
-      new Item("Conjured Cookie", 0, 0),
+      new Conjured("Conjured Mana Cake", 9, 18),
+      new Conjured("Conjured Pie", 4, 3),
+      new Conjured("Conjured Cookie", 0, 0),
     ]);
   });
 
@@ -218,9 +218,9 @@ describe("Gilded Rose", function() {
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Item("Conjured Mana Cake", -1, 16),
-      new Item("Conjured Pie", -2, 1),
-      new Item("Conjured Cookie", -3, 0),
+      new Conjured("Conjured Mana Cake", -1, 16),
+      new Conjured("Conjured Pie", -2, 1),
+      new Conjured("Conjured Cookie", -3, 0),
     ]);
   });
 
@@ -235,8 +235,8 @@ describe("Gilded Rose", function() {
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Item("Conjured Mana Cake", 1, 0),
-      new Item("Conjured Cookie", -2, 0),
+      new Conjured("Conjured Mana Cake", 1, 0),
+      new Conjured("Conjured Cookie", -2, 0),
       new Item("+5 Dexterity Vest", 4, 0),
       new Item("Elixir of the Mongoose", -2, 0),
     ]);

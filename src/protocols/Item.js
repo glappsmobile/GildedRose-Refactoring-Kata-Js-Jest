@@ -1,12 +1,13 @@
 class Item {
-  constructor(name, sellIn, quality){
+  constructor(name, sellIn, quality, decreaseRate){
     this.name = name || "Unknown";
     this.sellIn = sellIn || 0;
     this.quality = quality || 0;
+    this.decreaseRate = decreaseRate || 1;
   }
 
   decreaseQuality(value) {
-    this.quality -= value || 1;
+    this.quality -= value || this.decreaseRate;
 
     if (this.quality < 0){
       this.quality = 0;
