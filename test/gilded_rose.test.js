@@ -55,7 +55,7 @@ describe("Gilded Rose", function() {
     ]);
   });
 
-  it("should increase quality by 1 for 'Aged Brie' with sellIn greater than 0 and quality less than 50", function() {
+  it("should increase quality by 1 for 'Aged Brie' with sellIn greater than 0", function() {
     const gildedRose = new Shop([
       new Item("Aged Brie", 10, 20),
       new Item("Aged Brie", 1, 0),
@@ -71,11 +71,11 @@ describe("Gilded Rose", function() {
     ]);
   });
 
-  it("should increase quality by 2 for 'Aged Brie' with sellIn less than or equals to 0 and quality less than 50", function() {
+  it("should increase quality by 2 for 'Aged Brie' with sellIn less than or equals to 0", function() {
     const gildedRose = new Shop([
       new Item("Aged Brie", 0, 20),
       new Item("Aged Brie", -1, 0),
-      new Item("Aged Brie", -50, 49),
+      new Item("Aged Brie", -50, 48),
     ]);
 
     const items = gildedRose.updateQuality();
@@ -105,7 +105,7 @@ describe("Gilded Rose", function() {
     ]);
   });
 
-  it("should increase quality by 1 for 'Backstage passes' with sellIn greater than 10 and quality less than 50", function() {
+  it("should increase quality by 1 for 'Backstage passes' with sellIn greater than 10", function() {
     const gildedRose = new Shop([
       new Item("Backstage passes to a TAFKAL80ETC concert", 11, 20),
       new Item("Backstage passes to a TAFKAL80ETC concert", 20, 0),
