@@ -1,10 +1,6 @@
 import { Item } from './Item';
 
 export class Cheese extends Item {
-  constructor(name: string, sellIn: number , quality: number) {
-    super(name, sellIn, quality);
-  }
-
   updateQuality() {
     this.increaseQuality();
 
@@ -13,6 +9,5 @@ export class Cheese extends Item {
     if (this.isExpired()) {
       this.increaseQuality();
     }
-
   }
 }
