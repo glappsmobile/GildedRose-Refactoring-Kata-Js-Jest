@@ -3,7 +3,7 @@ const { Shop } = require("../src/gilded_rose");
 const { Item } = require("../src/protocols/Item");
 const { Conjured } = require("../src/protocols/Conjured");
 const { Cheese } = require("../src/protocols/Cheese");
-const { Legendary } = require("../src/protocols/Cheese");
+const { Legendary } = require("../src/protocols/Legendary");
 const { Pass } = require("../src/protocols/Pass");
 
 const items = [
@@ -18,7 +18,7 @@ const items = [
   new Conjured("Conjured Mana Cake", 3, 6),
 ];
 
-const days = Number(process.argv[2]) || 2;
+const days = Number(process.argv[2]) || 10;
 const gildedRose = new Shop(items);
 
 console.log("OMGHAI!");
