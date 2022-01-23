@@ -4,9 +4,9 @@ class Shop {
   }
 
   updateQuality() {
-    for (let i = 0; i < this.items.length; i++) {
-      this.items[i].updateQuality();
-    }
+    this.items.forEach((item) => {
+      item.updateQuality();
+    })
 
     return this.items;
   }
