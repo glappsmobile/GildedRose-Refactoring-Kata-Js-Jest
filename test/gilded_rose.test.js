@@ -190,42 +190,42 @@ describe("Gilded Rose", function() {
     ]);
   });
 
-  it("should decrease quality by 2 for 'Conjured Mana Cake' with sellIn and quality greater than 0", function() {
+  it("should decrease quality by 2 for Conjured Items with sellIn and quality greater than 0", function() {
     const gildedRose = new Shop([
       new Conjured("Conjured Mana Cake", 10, 20),
-      new Conjured("Conjured Mana Cake", 5, 5),
-      new Conjured("Conjured Mana Cake", 1, 2),
+      new Conjured("Conjured Pie", 5, 5),
+      new Conjured("Conjured Cookie", 1, 2),
     ]);
 
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
       new Item("Conjured Mana Cake", 9, 18),
-      new Item("Conjured Mana Cake", 4, 3),
-      new Item("Conjured Mana Cake", 0, 0),
+      new Item("Conjured Pie", 4, 3),
+      new Item("Conjured Cookie", 0, 0),
     ]);
   });
 
-  it("should decrease quality by 4 for 'Conjured Mana Cake' with sellIn less than or equals to 0", function() {
+  it("should decrease quality by 4 for Conjured Items with sellIn less than or equals to 0", function() {
     const gildedRose = new Shop([
       new Conjured("Conjured Mana Cake", 0, 20),
-      new Conjured("Conjured Mana Cake", -1, 5),
-      new Conjured("Conjured Mana Cake", -2, 4),
+      new Conjured("Conjured Pie", -1, 5),
+      new Conjured("Conjured Cookie", -2, 4),
     ]);
 
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
       new Item("Conjured Mana Cake", -1, 16),
-      new Item("Conjured Mana Cake", -2, 1),
-      new Item("Conjured Mana Cake", -3, 0),
+      new Item("Conjured Pie", -2, 1),
+      new Item("Conjured Cookie", -3, 0),
     ]);
   });
 
   it("should not decrease any quality below 0", function() {
     const gildedRose = new Shop([
       new Conjured("Conjured Mana Cake", 2, 1),
-      new Conjured("Conjured Mana Cake", -1, 3),
+      new Conjured("Conjured Cookie", -1, 3),
       new Item("+5 Dexterity Vest", 5, 0),
       new Item("Elixir of the Mongoose", -1, 1),
     ]);
@@ -234,7 +234,7 @@ describe("Gilded Rose", function() {
 
     expect(items).toEqual([
       new Item("Conjured Mana Cake", 1, 0),
-      new Item("Conjured Mana Cake", -2, 0),
+      new Item("Conjured Cookie", -2, 0),
       new Item("+5 Dexterity Vest", 4, 0),
       new Item("Elixir of the Mongoose", -2, 0),
     ]);
