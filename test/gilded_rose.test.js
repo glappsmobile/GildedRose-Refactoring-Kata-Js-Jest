@@ -71,9 +71,9 @@ describe("Gilded Rose", function() {
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Item("Aged Brie", 9, 21),
-      new Item("Cheddar", 0, 1),
-      new Item("Gouda", 3, 50),
+      new Cheese("Aged Brie", 9, 21),
+      new Cheese("Cheddar", 0, 1),
+      new Cheese("Gouda", 3, 50),
     ]);
   });
 
@@ -87,9 +87,9 @@ describe("Gilded Rose", function() {
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Item("Aged Brie", -1, 22),
-      new Item("Cheddar", -2, 2),
-      new Item("Gouda", -51, 50),
+      new Cheese("Aged Brie", -1, 22),
+      new Cheese("Cheddar", -2, 2),
+      new Cheese("Gouda", -51, 50),
     ]);
   });
 
@@ -104,10 +104,10 @@ describe("Gilded Rose", function() {
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Item("Sulfuras, Hand of Ragnaros", 0, 80),
-      new Item("Infinity Gauntlet", 0, 80),
-      new Item("Javascript", 1, 80),
-      new Item("Golden Banana", -2, 80),
+      new Legendary("Sulfuras, Hand of Ragnaros", 0, 80),
+      new Legendary("Infinity Gauntlet", 0, 80),
+      new Legendary("Javascript", 1, 80),
+      new Legendary("Golden Banana", -2, 80),
     ]);
   });
 
@@ -189,7 +189,7 @@ describe("Gilded Rose", function() {
       new Pass("Backstage passes to a TAFKAL80ETC concert", 0, 50),
       new Pass("Backstage passes to a TAFKAL80ETC concert", 9, 50),
       new Pass("Backstage passes to a TAFKAL80ETC concert", 19, 50),
-      new Item("Aged Brie", -2, 50),
+      new Cheese("Aged Brie", -2, 50),
     ]);
   });
 
