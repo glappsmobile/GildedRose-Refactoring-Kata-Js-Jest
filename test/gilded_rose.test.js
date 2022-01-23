@@ -54,5 +54,37 @@ describe("Gilded Rose", function() {
       new Item("Unknown Seed", -6, 48),
     ]);
   });
+
+  it("should increase quality by 1 for Aged Brie with sellIn greater than 0 and quality less than 50", function() {
+    const gildedRose = new Shop([
+      new Item("Aged Brie", 10, 20),
+      new Item("Aged Brie", 1, 0),
+      new Item("Aged Brie", 4, 49),
+    ]);
+
+    const items = gildedRose.updateQuality();
+
+    expect(items).toEqual([
+      new Item("Aged Brie", 9, 21),
+      new Item("Aged Brie", 0, 1),
+      new Item("Aged Brie", 3, 50),
+    ]);
+  });
+
+  it("should increase quality by 2 for Aged Brie with sellIn less than or equals to 0 and quality less than 50", function() {
+    const gildedRose = new Shop([
+      new Item("Aged Brie", 0, 20),
+      new Item("Aged Brie", -1, 0),
+      new Item("Aged Brie", -50, 49),
+    ]);
+
+    const items = gildedRose.updateQuality();
+
+    expect(items).toEqual([
+      new Item("Aged Brie", -1, 22),
+      new Item("Aged Brie", -2, 2),
+      new Item("Aged Brie", -51, 50),
+    ]);
+  });
   
 });
