@@ -92,21 +92,21 @@ describe("Gilded Rose", function() {
     ]);
   });
 
-  it("should keep quality at 80 and leave sellIn untouched for 'Sulfuras, Hand of Ragnaros'", function() {
+  it("should keep quality at 80 and leave sellIn untouched for Legendary Items", function() {
     const gildedRose = new Shop([
       new Legendary("Sulfuras, Hand of Ragnaros"),
-      new Legendary("Sulfuras, Hand of Ragnaros"),
-      new Legendary("Sulfuras, Hand of Ragnaros", 1),
-      new Legendary("Sulfuras, Hand of Ragnaros", -2),
+      new Legendary("Infinity Gauntlet"),
+      new Legendary("Javascript", 1),
+      new Legendary("Golden Banana", -2),
     ]);
 
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
       new Item("Sulfuras, Hand of Ragnaros", 0, 80),
-      new Item("Sulfuras, Hand of Ragnaros", 0, 80),
-      new Item("Sulfuras, Hand of Ragnaros", 1, 80),
-      new Item("Sulfuras, Hand of Ragnaros", -2, 80),
+      new Item("Infinity Gauntlet", 0, 80),
+      new Item("Javascript", 1, 80),
+      new Item("Golden Banana", -2, 80),
     ]);
   });
 
