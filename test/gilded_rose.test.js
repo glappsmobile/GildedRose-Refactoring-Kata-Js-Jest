@@ -153,7 +153,6 @@ describe("Gilded Rose", function() {
     ]);
   });
 
-
   it("should decrease quality to 0 for 'Backstage passes' with sellIn less than or equals to 0", function() {
     const gildedRose = new Shop([
       new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50),
@@ -167,6 +166,24 @@ describe("Gilded Rose", function() {
       new Item("Backstage passes to a TAFKAL80ETC concert", -1, 0),
       new Item("Backstage passes to a TAFKAL80ETC concert", -2, 0),
       new Item("Backstage passes to a TAFKAL80ETC concert", -6, 0),
+    ]);
+  });
+
+  it("should increase up to 50 non-legendary items that increase quality over time", function() {
+    const gildedRose = new Shop([
+      new Item("Backstage passes to a TAFKAL80ETC concert", 1, 48),
+      new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+      new Item("Backstage passes to a TAFKAL80ETC concert", 20, 50),
+      new Item("Aged Brie", -1, 50),
+    ]);
+
+    const items = gildedRose.updateQuality();
+
+    expect(items).toEqual([
+      new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50),
+      new Item("Backstage passes to a TAFKAL80ETC concert", 9, 50),
+      new Item("Backstage passes to a TAFKAL80ETC concert", 19, 50),
+      new Item("Aged Brie", -2, 50),
     ]);
   });
 });
