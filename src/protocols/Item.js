@@ -40,19 +40,15 @@ class Item {
 
   updateQuality() {
     if (this.quality > this.minQuality) {
-        this.decreaseQuality()
+      this.decreaseQuality()
     }
 
     this.decreaseSellIn();
 
-    if (this.sellIn < this.minQuality) {
-        if (this.name != 'Backstage passes to a TAFKAL80ETC concert') {
-          if (this.quality > this.minQuality) {
-              this.decreaseQuality()
-          }
-        } else {
-          this.quality = this.quality - this.quality;
-        }
+    if (this.sellIn < 0) {
+      if (this.quality > this.minQuality) {
+          this.decreaseQuality()
+      }
     }
   }
 }
