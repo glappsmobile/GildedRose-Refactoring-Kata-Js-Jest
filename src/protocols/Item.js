@@ -39,16 +39,11 @@ class Item {
   }
 
   updateQuality() {
-    if (this.quality > this.minQuality) {
-      this.decreaseQuality()
-    }
-
+    this.decreaseQuality()
     this.decreaseSellIn();
 
     if (this.sellIn < 0) {
-      if (this.quality > this.minQuality) {
-          this.decreaseQuality()
-      }
+      this.decreaseQuality()
     }
   }
 }
