@@ -1,9 +1,17 @@
 class Item {
-  constructor(name, sellIn, quality, decreaseRate){
+  constructor(name, sellIn, quality, decreaseRate, hasQualityLimit){
     this.name = name || "Unknown";
     this.sellIn = sellIn || 0;
     this.quality = quality || 0;
     this.decreaseRate = decreaseRate || 1;
+
+    if (this.quality < 0) {
+      this.quality = 0;
+    }
+
+    if (hasQualityLimit && this.quality > 50){
+      this.quality = 50;
+    }
   }
 
   decreaseQuality(value) {
