@@ -1,5 +1,9 @@
-class Shop {
-  constructor(items=[]){
+import { Item } from './Item';
+
+export class Shop {
+  items: Item[];
+
+  constructor(items: Item[] =[]){
     this.items = items;
   }
 
@@ -10,8 +14,4 @@ class Shop {
 
     return this.items;
   }
-}
-
-module.exports = {
-  Shop
 }

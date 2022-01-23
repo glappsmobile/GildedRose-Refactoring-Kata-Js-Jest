@@ -1,6 +1,12 @@
-class Item {
+export class Item {
+  maxQuality: number;
+  minQuality: number;
+  name: string;
+  sellIn: number;
+  quality: number;
+  decreaseRate: number;
 
-  constructor(name, sellIn, quality, decreaseRate, hasQualityLimit = true){
+  constructor(name: string, sellIn: number, quality: number, decreaseRate?: number, hasQualityLimit: boolean = true){
     this.maxQuality = 50;
     this.minQuality = 0;
 
@@ -18,7 +24,7 @@ class Item {
     }
   }
 
-  decreaseQuality(value) {
+  decreaseQuality(value?: number) {
     this.quality -= value || this.decreaseRate;
 
     if (this.quality < this.minQuality){
@@ -26,7 +32,7 @@ class Item {
     }
   }
 
-  increaseQuality(value) {
+  increaseQuality(value?: number) {
     this.quality += value || 1;
 
     if (this.quality > this.maxQuality){
@@ -38,7 +44,7 @@ class Item {
     return this.sellIn < 0;
   }
 
-  decreaseSellIn(value) {
+  decreaseSellIn(value?: number) {
     this.sellIn -= value || 1;
   }
 
@@ -50,8 +56,4 @@ class Item {
       this.decreaseQuality();
     }
   }
-}
-
-module.exports = {
-  Item
 }
