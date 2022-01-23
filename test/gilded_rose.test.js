@@ -3,6 +3,7 @@ const { Item } = require("../src/protocols/Item");
 const { Conjured } = require("../src/protocols/Conjured");
 const { Cheese } = require("../src/protocols/Cheese");
 const { Legendary } = require("../src/protocols/Legendary");
+const { Pass } = require("../src/protocols/Pass");
 
 describe("Gilded Rose", function() {
   
@@ -112,82 +113,82 @@ describe("Gilded Rose", function() {
 
   it("should increase quality by 1 for 'Backstage passes' with sellIn greater than 10", function() {
     const gildedRose = new Shop([
-      new Item("Backstage passes to a TAFKAL80ETC concert", 11, 20),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 20, 0),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 50, 49),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 11, 20),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 20, 0),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 50, 49),
     ]);
 
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Item("Backstage passes to a TAFKAL80ETC concert", 10, 21),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 19, 1),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 49, 50),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 10, 21),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 19, 1),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 49, 50),
     ]);
   });
 
   it("should increase quality by 2 for 'Backstage passes' with sellIn greater than 5 and less than or equals to 10", function() {
     const gildedRose = new Shop([
-      new Item("Backstage passes to a TAFKAL80ETC concert", 6, 20),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 8, 0),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 10, 48),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 6, 20),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 8, 0),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 10, 48),
     ]);
 
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Item("Backstage passes to a TAFKAL80ETC concert", 5, 22),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 7, 2),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 9, 50),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 5, 22),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 7, 2),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 9, 50),
     ]);
   });
 
   it("should increase quality by 3 for 'Backstage passes' with sellIn greater than 0 and less than or equals to 5", function() {
     const gildedRose = new Shop([
-      new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 3, 0),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 1, 47),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 5, 20),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 3, 0),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 1, 47),
     ]);
 
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Item("Backstage passes to a TAFKAL80ETC concert", 4, 23),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 2, 3),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 4, 23),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 2, 3),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 0, 50),
     ]);
   });
 
   it("should decrease quality to 0 for 'Backstage passes' with sellIn less than or equals to 0", function() {
     const gildedRose = new Shop([
-      new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", -1, 5),
-      new Item("Backstage passes to a TAFKAL80ETC concert", -5, 0),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 0, 50),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", -1, 5),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", -5, 0),
     ]);
 
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Item("Backstage passes to a TAFKAL80ETC concert", -1, 0),
-      new Item("Backstage passes to a TAFKAL80ETC concert", -2, 0),
-      new Item("Backstage passes to a TAFKAL80ETC concert", -6, 0),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", -1, 0),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", -2, 0),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", -6, 0),
     ]);
   });
 
   it("should increase up to 50 non-legendary items that increase quality over time", function() {
     const gildedRose = new Shop([
-      new Item("Backstage passes to a TAFKAL80ETC concert", 1, 48),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 20, 50),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 1, 48),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 20, 50),
       new Cheese("Aged Brie", -1, 50),
     ]);
 
     const items = gildedRose.updateQuality();
 
     expect(items).toEqual([
-      new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 9, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 19, 50),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 0, 50),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 9, 50),
+      new Pass("Backstage passes to a TAFKAL80ETC concert", 19, 50),
       new Item("Aged Brie", -2, 50),
     ]);
   });

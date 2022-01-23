@@ -6,15 +6,13 @@ class Cheese extends Item {
   }
 
   updateQuality() {
-    if (this.quality < 50) {
-      this.increaseQuality();
+    this.increaseQuality();
 
-      if (this.sellIn <= 0) {
-        this.increaseQuality()
-      }
+    if (this.sellIn <= 0) {
+      this.increaseQuality();
     }
 
-    this.decreaseSellIn()
+    this.decreaseSellIn();
   }
 }
 
