@@ -17,11 +17,11 @@ class Pass extends Item {
       this.increaseQuality(1);
     }
   
-    if (this.sellIn <= 0) {
+    this.decreaseSellIn();
+
+    if (this.isExpired()) {
       this.quality = 0;
     }
-    
-    this.decreaseSellIn();
   }
 }
 

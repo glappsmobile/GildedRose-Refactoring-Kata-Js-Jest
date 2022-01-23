@@ -34,16 +34,20 @@ class Item {
     }  
   }
 
+  isExpired() {
+    return this.sellIn < 0;
+  }
+
   decreaseSellIn(value) {
     this.sellIn -= value || 1;
   }
 
   updateQuality() {
-    this.decreaseQuality()
+    this.decreaseQuality();
     this.decreaseSellIn();
 
-    if (this.sellIn < 0) {
-      this.decreaseQuality()
+    if (this.isExpired()) {
+      this.decreaseQuality();
     }
   }
 }

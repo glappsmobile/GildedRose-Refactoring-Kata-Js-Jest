@@ -8,11 +8,12 @@ class Cheese extends Item {
   updateQuality() {
     this.increaseQuality();
 
-    if (this.sellIn <= 0) {
+    this.decreaseSellIn();
+
+    if (this.isExpired()) {
       this.increaseQuality();
     }
 
-    this.decreaseSellIn();
   }
 }
 
