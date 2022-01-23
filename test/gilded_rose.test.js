@@ -203,4 +203,20 @@ describe("Gilded Rose", function() {
       new Item("Conjured Mana Cake", 0, 0),
     ]);
   });
+
+  it("should decrease quality by 4 for 'Conjured Mana Cake' with sellIn less than or equals to 0", function() {
+    const gildedRose = new Shop([
+      new Item("Conjured Mana Cake", 0, 20),
+      new Item("Conjured Mana Cake", -1, 5),
+      new Item("Conjured Mana Cake", -2, 4),
+    ]);
+
+    const items = gildedRose.updateQuality();
+
+    expect(items).toEqual([
+      new Item("Conjured Mana Cake", -1, 16),
+      new Item("Conjured Mana Cake", -2, 1),
+      new Item("Conjured Mana Cake", -3, 0),
+    ]);
+  });
 });
