@@ -1,6 +1,7 @@
 const { Shop } = require("../src/gilded_rose");
 const { Item } = require("../src/protocols/Item");
 const { Conjured } = require("../src/protocols/Conjured");
+const { Cheese } = require("../src/protocols/Cheese");
 
 describe("Gilded Rose", function() {
   
@@ -60,9 +61,9 @@ describe("Gilded Rose", function() {
 
   it("should increase quality by 1 for 'Aged Brie' with sellIn greater than 0", function() {
     const gildedRose = new Shop([
-      new Item("Aged Brie", 10, 20),
-      new Item("Aged Brie", 1, 0),
-      new Item("Aged Brie", 4, 49),
+      new Cheese("Aged Brie", 10, 20),
+      new Cheese("Aged Brie", 1, 0),
+      new Cheese("Aged Brie", 4, 49),
     ]);
 
     const items = gildedRose.updateQuality();
@@ -76,9 +77,9 @@ describe("Gilded Rose", function() {
 
   it("should increase quality by 2 for 'Aged Brie' with sellIn less than or equals to 0", function() {
     const gildedRose = new Shop([
-      new Item("Aged Brie", 0, 20),
-      new Item("Aged Brie", -1, 0),
-      new Item("Aged Brie", -50, 48),
+      new Cheese("Aged Brie", 0, 20),
+      new Cheese("Aged Brie", -1, 0),
+      new Cheese("Aged Brie", -50, 48),
     ]);
 
     const items = gildedRose.updateQuality();
@@ -177,7 +178,7 @@ describe("Gilded Rose", function() {
       new Item("Backstage passes to a TAFKAL80ETC concert", 1, 48),
       new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
       new Item("Backstage passes to a TAFKAL80ETC concert", 20, 50),
-      new Item("Aged Brie", -1, 50),
+      new Cheese("Aged Brie", -1, 50),
     ]);
 
     const items = gildedRose.updateQuality();
