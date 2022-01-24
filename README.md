@@ -44,7 +44,7 @@ npm run test:coverage
 To visualize a text table test
 
 ```sh
-npm run test:coverage
+npm run test:text
 ```
 
 ## Building
